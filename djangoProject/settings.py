@@ -40,14 +40,18 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
+
     'dlngs.apps.DlngsConfig',
 
+    'corsheaders',
     'rest_framework',
     'rest_framework.authtoken',
     'dj_rest_auth',
     'dj_rest_auth.registration',
     'allauth',
-    'corsheaders',
+    'allauth.account',
+    'allauth.socialaccount',
 ]
 
 MIDDLEWARE = [
@@ -60,6 +64,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 
     'corsheaders.middleware.CorsMiddleware',
+    'allauth.account.middleware.AccountMiddleware',
 ]
 
 ROOT_URLCONF = 'djangoProject.urls'
@@ -182,3 +187,6 @@ REST_AUTH = {
 
 CORS_ORIGIN_ALLOW_ALL = False
 CORS_ORIGIN_WHITELIST = ['http://localhost:3000']
+
+SITE_ID = 1
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
