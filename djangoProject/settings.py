@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'dj_rest_auth',
     'dj_rest_auth.registration',
     'allauth',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
@@ -57,6 +58,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
+    'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'djangoProject.urls'
@@ -172,7 +175,10 @@ REST_AUTH = {
     'JWT_AUTH_SECURE': False,
     'JWT_AUTH_HTTPONLY': False,
     'JWT_AUTH_SAMESITE': 'Lax',
-    'JWT_AUTH_RETURN_EXPIRATION': False,
+    'JWT_AUTH_RETURN_EXPIRATION': True,
     'JWT_AUTH_COOKIE_USE_CSRF': False,
     'JWT_AUTH_COOKIE_ENFORCE_CSRF_ON_UNAUTHENTICATED': False,
 }
+
+CORS_ORIGIN_ALLOW_ALL = False
+CORS_ORIGIN_WHITELIST = ['http://localhost:3000']
